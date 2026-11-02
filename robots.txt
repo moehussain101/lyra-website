@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://moehussain101.github.io/lyra-website/sitemap.xml
