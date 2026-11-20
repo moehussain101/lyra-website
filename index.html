@@ -1294,15 +1294,17 @@
               </li>
             </ul>
           </div>
-          <div class="signup-form-box">
+          <form class="signup-form-box" action="https://formspree.io/f/xgakzjjw" method="POST">
             <label for="releaseEmail">Email address</label>
             <div class="signup-field-row">
-              <input id="releaseEmail" type="email" placeholder="you@example.com" disabled aria-describedby="signupHonest" />
-              <button type="button" disabled>Notify me</button>
+              <input id="releaseEmail" type="email" name="email" placeholder="you@example.com" required aria-describedby="signupHonest" />
+              <button type="submit">Notify me</button>
             </div>
-            <span class="signup-status">Signup opens closer to the 2027 launch</span>
-            <p class="signup-honest" id="signupHonest"><b>Straight up:</b> the form is switched off for now and this page does not save emails yet — there's no waitlist running behind it. Typing an address here today would go nowhere, so it's disabled until the real signup opens closer to release. When it does open, this is the exact spot to use.</p>
-          </div>
+            <span class="signup-status">Testing opens December 13, 2026 — leave your email and we'll let you know when it's your turn.</span>
+            <p class="signup-honest" id="signupHonest"><b>Straight up:</b> one email when testing opens, and one when Lyra ships in 2027. Nothing else — no drip campaign, no spam.</p>
+            <input type="hidden" name="_next" value="https://lyramacnotch.pages.dev/?signedup=1" />
+            <input type="hidden" name="_subject" value="New Lyra tester signup" />
+          </form>
         </div>
       </div>
     </section>
@@ -1821,6 +1823,15 @@
           }, { threshold: 0.25 }).observe(document.getElementById("wake"));
         } else { wakeSequence(); }
 
+      })();
+    </script>
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        if (params.get("signedup") === "1") {
+          var status = document.querySelector(".signup-status");
+          if (status) status.textContent = "You're on the list — we'll email you when testing opens.";
+        }
       })();
     </script>
   </body>
